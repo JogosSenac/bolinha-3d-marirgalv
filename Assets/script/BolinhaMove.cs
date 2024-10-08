@@ -31,4 +31,21 @@ public class BolinhaMove : MonoBehaviour
             rb.AddForce(transform.up * forcaPulo, ForceMode.Impulse);
         }
     }
+
+    public void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.CompareTag("agua"))
+        {
+            Destroy(this.gameObject);
+        }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("coin"))
+        {
+            Destroy(other.gameObject);
+        }
+    }
 }
