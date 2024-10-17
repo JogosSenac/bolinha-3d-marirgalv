@@ -9,12 +9,14 @@ public class BolinhaMove : MonoBehaviour
     private float moveH;
     private float moveV;
     private Rigidbody rb;
+    public int contcoin;
     [SerializeField] private float velocidade;
     [SerializeField] private float forcaPulo;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        contcoin = 0;
     }
 
     // Update is called once per frame
@@ -32,6 +34,7 @@ public class BolinhaMove : MonoBehaviour
         }
     }
 
+//Morte da bolinha
     public void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.CompareTag("agua"))
@@ -40,12 +43,13 @@ public class BolinhaMove : MonoBehaviour
         }
 
     }
-
+//Coletar a moedinhas
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("coin"))
         {
             Destroy(other.gameObject);
+            contcoin +=1;
         }
     }
 }
