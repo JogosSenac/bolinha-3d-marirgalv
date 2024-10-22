@@ -6,6 +6,7 @@ TagManager:
   tags:
   - agua
   - coin
+  - portal
   layers:
   - Default
   - TransparentFX

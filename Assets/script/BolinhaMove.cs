@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEditor.Callbacks;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+using TMPro;
 
 public class BolinhaMove : MonoBehaviour
 {
@@ -12,11 +14,13 @@ public class BolinhaMove : MonoBehaviour
     public int contcoin;
     [SerializeField] private float velocidade;
     [SerializeField] private float forcaPulo;
+    [SerializeField] private int countcoin = 0;
+    public GameObject coin;
+    public TextMeshProUGUI coinColected;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        contcoin = 0;
     }
 
     // Update is called once per frame
@@ -26,6 +30,8 @@ public class BolinhaMove : MonoBehaviour
         moveH = Input.GetAxis("Horizontal");
         moveV = Input.GetAxis("Vertical");
         transform.position += new Vector3(moveH * velocidade * Time.deltaTime,0, moveV * velocidade * Time.deltaTime);
+
+        coinColected.text = countcoin.ToString();
 
         //pulo da bolinha
         if (Input.GetKeyDown(KeyCode.Space))
@@ -44,12 +50,18 @@ public class BolinhaMove : MonoBehaviour
 
     }
 //Coletar a moedinhas
-    private void OnTriggerEnter(Collider other)
+     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("coin"))
         {
             Destroy(other.gameObject);
-            contcoin +=1;
+            countcoin ++ ;
         }
+
+        if  (other.gameObject.CompareTag("portal") && countcoin == 10)
+        {
+            SceneManager.LoadScene(2);
+        }
+        
     }
 }

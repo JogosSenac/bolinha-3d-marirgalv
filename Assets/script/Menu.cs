@@ -8,7 +8,7 @@ public class Menu : MonoBehaviour
     // Start is called before the first frame update
    public void Startjogo()
     {
-        SceneManager.LoadScene("projeto3D");
+        SceneManager.LoadScene("fase1");
     }
 
     // Update is called once per frame
