@@ -7,6 +7,8 @@ TagManager:
   - agua
   - coin
   - portal
+  - chao
+  - portal2
   layers:
   - Default
   - TransparentFX

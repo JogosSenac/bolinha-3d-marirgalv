@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/fase2.unity
     guid: f75718eb5cdcbfd45930b93df03f4d39
+  - enabled: 1
+    path: Assets/Scenes/morreu.unity
+    guid: c5128a79c0e7d6c47a079cfb01b748d2
+  - enabled: 1
+    path: Assets/Scenes/creditos.unity
+    guid: 7fd23577a040f3c42a6d8fe4626e1cf3
   m_configObjects: {}

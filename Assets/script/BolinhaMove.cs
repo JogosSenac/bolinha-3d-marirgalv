@@ -17,6 +17,8 @@ public class BolinhaMove : MonoBehaviour
     [SerializeField] private int countcoin = 0;
     public GameObject coin;
     public TextMeshProUGUI coinColected;
+    private bool Jumping;
+    private bool Vida;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,9 +36,10 @@ public class BolinhaMove : MonoBehaviour
         coinColected.text = countcoin.ToString();
 
         //pulo da bolinha
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && Jumping == false)
         {
             rb.AddForce(transform.up * forcaPulo, ForceMode.Impulse);
+            Jumping = true;
         }
     }
 
@@ -46,6 +49,11 @@ public class BolinhaMove : MonoBehaviour
         if(other.gameObject.CompareTag("agua"))
         {
             Destroy(this.gameObject);
+             SceneManager.LoadScene(3);
+        }
+        if(other.gameObject.CompareTag("chao"))
+        {
+            Jumping = false;
         }
 
     }
@@ -63,5 +71,9 @@ public class BolinhaMove : MonoBehaviour
             SceneManager.LoadScene(2);
         }
         
+        if (other.gameObject.CompareTag("portal2") && countcoin == 13)
+        {
+            SceneManager.LoadScene(4);
+        }
     }
 }
